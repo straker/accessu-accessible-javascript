@@ -1,0 +1,21 @@
+{
+  "name": "accessible-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --out-dir dist",
+    "dev": "babel --watch src --out-dir dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-react": "^7.16.7",
+    "babel-plugin-react-css-modules": "^5.2.6",
+    "esbuild": "^0.14.38",
+    "esbuild-css-modules-plugin": "^2.2.16"
+  }
+}
