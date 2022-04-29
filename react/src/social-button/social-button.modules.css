@@ -1,0 +1,17 @@
+.social-button {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  border: 0;
+  background: transparent;
+  padding: 0.25rem 0.5rem;
+}
+
+.social-button:hover, .social-button:focus {
+  cursor: pointer;
+  outline: 2px solid var(--blue);
+}
+
+.social-button[aria-pressed="true"] {
+  color: var(--blue);
+}
