@@ -10,8 +10,13 @@ const units = {
 const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
 const dtf = new Intl.DateTimeFormat('en');
 
-// Transform an ISO time to either a relative measurement or as a date
-// @see https://stackoverflow.com/a/53800501/2124254
+/**
+ * Transform an ISO time to either a relative measurement or a date.
+ * @see https://stackoverflow.com/a/53800501/2124254
+ * @param {String|Date} d1 - Date to transform.
+ * @param {Date} [d2] - Date to get relative time from. Defaults to current date.
+ * @returns {String}
+ */
 export function getTime(d1, d2 = new Date()) {
   if (typeof d1 === 'string') {
     d1 = new Date(d1);
@@ -30,7 +35,11 @@ export function getTime(d1, d2 = new Date()) {
   }
 }
 
-// Format a number to use "K" for thousands
+/**
+ * Format a number to use "K" for thousands.
+ * @param {Number} num - Number to format.
+ * @returns {String|Number}
+ */
 export function formatStat(num) {
   if (num > 1000) {
     return `${(num / 1000).toFixed(1)}K`;

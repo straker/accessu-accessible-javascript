@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from '../icon/icon';
 import styles from './social-button.modules.css';
-import { formatStat } from '../utils';
+import { formatStat } from '../../utils';
 
 export default class SocialButton extends React.Component {
   constructor(props) {
@@ -10,11 +10,13 @@ export default class SocialButton extends React.Component {
     this.state = { count, pressed };
   }
 
+  /**
+   * Update the buttons pressed state.
+   */
   onClick() {
     const pressed = !this.state.pressed;
     const count = this.state.count + (pressed ? 1 : -1);
     this.setState({ count, pressed });
-    this.props.onClick?.();
   }
 
   render() {

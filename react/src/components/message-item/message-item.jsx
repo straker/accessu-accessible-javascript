@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './message-item.modules.css';
 import Icon from '../icon/icon';
 import SocialButton from '../social-button/social-button';
-import { getTime, formatStat } from '../utils';
+import { getTime } from '../../utils';
 
 export default class MessageItem extends React.Component {
   constructor(props) {

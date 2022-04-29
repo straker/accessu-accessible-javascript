@@ -3,7 +3,9 @@ import MessageList from '../message-list/message-list';
 import Icon from '../icon/icon';
 import CreateMessage from '../create-message/create-message';
 import styles from './app.modules.css';
-import messages from '../../assets/data/messages';
+
+// pretend we got this from a database query
+import messages from '../../assets/messages';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -13,14 +15,19 @@ export default class App extends React.Component {
     this.deleteMessage = this.deleteMessage.bind(this);
   }
 
+  /**
+   * Create a new message state object.
+   * @param {String} message - User message.
+   */
   createMessage(message) {
     const newMessage = {
+      // a mock id and user data
       id: Math.random(),
       user: {
         name: 'Sam Mills',
         handle: '@sam_mills',
         link: '/users/@sam_mills',
-        profile: '/assets/images/sam-profile.png'
+        profile: '/src/assets/sam-profile.png'
       },
       timestamp: (new Date()).toISOString(),
       message,
@@ -32,6 +39,10 @@ export default class App extends React.Component {
     this.setState({ messages: [newMessage, ...this.state.messages] });
   }
 
+  /**
+   * Delete a message from the messages state.
+   * @param {Number} id - ID of the message to delete.
+   */
   deleteMessage(id) {
     this.setState({ messages: this.state.messages.filter(message => message.id !== id)});
   }
@@ -39,7 +50,7 @@ export default class App extends React.Component {
   render() {
     return <div className={styles.app}>
       <header className={styles.header}>
-        <img className={styles.icon} src="/assets/images/react-logo.svg" alt=""/>
+        <img className={styles.icon} src="/src/assets/react-logo.svg" alt=""/>
         <h1 className={styles.title}>Home</h1>
       </header>
       <main className={styles.body}>

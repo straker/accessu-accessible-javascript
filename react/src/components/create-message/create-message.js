@@ -7,6 +7,10 @@ export default class CreateMessage extends React.Component {
     this.state = { message: '' };
   }
 
+  /**
+   * Submit the form data to the parent component.
+   * @param {Event} event - React onSubmit event.
+   */
   onSubmit(event) {
     event.preventDefault();
 
@@ -18,6 +22,10 @@ export default class CreateMessage extends React.Component {
     this.setState({ message: '' });
   }
 
+  /**
+   * Update message state when textarea changes.
+   * @param {Event} event - React onChange event.
+   */
   onChange(event) {
     this.setState({ message: event.target.value })
   }
