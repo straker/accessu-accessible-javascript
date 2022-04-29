@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "test": "jest",
+    "test:integration": "mocha tests/**/*.spec.js",
     "build": "node esbuild.js",
     "start": "http-server",
     "develop": "node esbuild.js -- watch"
@@ -11,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@axe-core/puppeteer": "^4.4.2",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
@@ -23,9 +25,12 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.0.2",
     "jest-environment-jsdom": "^28.0.2",
+    "mocha": "^9.2.2",
     "node-notifier": "^10.0.1",
+    "puppeteer": "^13.7.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "start-server-and-test": "^1.14.0"
   },
   "jest": {
     "testEnvironment": "jsdom",
