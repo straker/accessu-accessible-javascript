@@ -28,6 +28,21 @@ const messages = [
     likes: 10000,
     sympathy: 541,
     shares: 5000
+  },
+  {
+    id: 3,
+    user: {
+      name: 'Sam Mills',
+      handle: '@sam_mills',
+      link: '/users/@sam_mills',
+      profile: '/assets/images/sam-profile.png'
+    },
+    timestamp: '2022-04-01T06:00:00.000Z',
+    message: 'My computer was being super slow, saw that my memory usage was always high. Figured it was time to upgrade. In the process of looking at my memory specs, I discovered that I had half the memory I should. Turns out only 1 of the 2 sticks was properly plugged in 🙃',
+    comments: [],
+    likes: 210,
+    sympathy: 0,
+    shares: 0
   }
 ];
 
