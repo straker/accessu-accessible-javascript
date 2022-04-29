@@ -22,16 +22,15 @@ export default class SocialButton extends React.Component {
     const { count, pressed } = this.state;
 
     const iconName = `${icon}${pressed ? '_filled' : ''}`;
+    const className = `${styles.socialButton} ${pressed ? styles.pressed : ''}`;
 
-    return <button
-      className={styles.socialButton}
+    return <div
+      className={className}
       title={title}
       onClick={() => this.onClick()}
-      aria-label={title}
-      aria-pressed={pressed}
     >
       <Icon name={iconName} alt={title}></Icon>
       {formatStat(count)}
-    </button>
+    </div>
   }
 }
