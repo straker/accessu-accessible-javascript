@@ -4,10 +4,10 @@ import styles from './message-list.modules.css';
 
 export default class Icon extends React.Component {
   render() {
-    const { messages, onDelete } = this.props;
+    const { messages, onDelete, focus } = this.props;
 
-    const messageList = messages.map(message => {
-      return <li key={message.id}><MessageItem {...message} deleteMessage={() => onDelete(message.id)}/></li>
+    const messageList = messages.map((message, index) => {
+      return <li key={message.id}><MessageItem {...message} deleteMessage={() => onDelete(message.id)} focus={index === 0 && focus}/></li>
     });
 
     return <ul className={styles.messageList}>{messageList}</ul>

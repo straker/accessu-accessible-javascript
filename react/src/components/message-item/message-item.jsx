@@ -19,6 +19,22 @@ export default class MessageItem extends React.Component {
     };
   }
 
+  componentDidMount() {
+    if (this.props.focus) {
+      setTimeout(() => {
+        this.container.focus();
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.focus) {
+      setTimeout(() => {
+        this.container.focus();
+      });
+    }
+  }
+
   render () {
     const {
       id,
@@ -26,7 +42,8 @@ export default class MessageItem extends React.Component {
       timestamp,
       message,
       comments,
-      deleteMessage
+      deleteMessage,
+      focus
     } = this.props;
     const {
       userCommented,
@@ -38,7 +55,7 @@ export default class MessageItem extends React.Component {
       userShared
     } = this.state;
 
-    return <div className={styles.messageItem}>
+    return <div className={styles.messageItem} tabIndex={-1} ref={(ref) => this.container = ref} data-js-handle="message-item">
       <div>
         <img className={styles.profile} src={user.profile} alt="" />
       </div>
@@ -49,13 +66,15 @@ export default class MessageItem extends React.Component {
             <span className={styles.handle}>{user.handle}</span>
           </a>
           <div className={styles.date}>{getTime(timestamp)}</div>
-          <button
+          <div
+            tabIndex={0}
             className={styles.delete}
             title="Delete"
             onClick={() => deleteMessage(id)}
+            data-js-handle="delete-item"
           >
             <Icon name="delete" alt="Delete"/>
-          </button>
+          </div>
         </div>
         <div className={styles.body}>
           {message}

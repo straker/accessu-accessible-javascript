@@ -16,9 +16,11 @@ describe('App', () => {
     component?.unmount();
   });
 
-  it('should have 0 violations', async () => {
-    component = mount(<App />, { attachTo: fixture });
-    const results = await axe.run(fixture);
-    assert.equal(results.violations.length, 0);
+  describe('Accessibility', () => {
+    it('should have 0 axe violations', async () => {
+      component = mount(<App />, { attachTo: fixture });
+      const results = await axe.run(fixture);
+      assert.equal(results.violations.length, 0);
+    });
   });
 });
