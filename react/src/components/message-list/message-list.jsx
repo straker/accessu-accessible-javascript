@@ -2,7 +2,7 @@ import React from 'react';
 import MessageItem from '../message-item/message-item';
 import styles from './message-list.modules.css';
 
-export default class Icon extends React.Component {
+export default class MessageList extends React.Component {
   render() {
     const { messages, onDelete } = this.props;
 
