@@ -1,7 +1,6 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import axe from 'axe-core';
-import assert from 'assert';
 
 import MessageItem from './message-item';
 
@@ -11,30 +10,32 @@ describe('MessageItem', () => {
   let fixture = document.createElement('div');
   document.body.appendChild(fixture);
 
+   const message = {
+    id: 1,
+    user: {
+      name: 'John Doe',
+      handle: '@john_doe',
+      link: '/user/@john_doe',
+      profile: '/path/to/profile.png'
+    },
+    timestamp: (new Date()).toISOString(),
+    messaage: 'Hello World',
+    comments: [],
+    likes: 1,
+    sympathy: 2,
+    shares: 3
+  };
+
   let component;
   afterEach(() => {
     component?.unmount();
   });
 
-  it('should have 0 violations', async () => {
-    const message = {
-      id: 1,
-      user: {
-        name: 'John Doe',
-        handle: '@john_doe',
-        link: '/user/@john_doe',
-        profile: '/path/to/profile.png'
-      },
-      timestamp: (new Date()).toISOString(),
-      messaage: 'Hello World',
-      comments: [],
-      likes: 1,
-      sympathy: 2,
-      shares: 3
-    };
-
-    component = mount(<MessageItem {...message} />, { attachTo: fixture });
-    const results = await axe.run(fixture);
-    assert.equal(results.violations.length, 0);
+  describe('Accessibility', () => {
+    it('should have 0 violations', async () => {
+      component = mount(<MessageItem {...message} />, { attachTo: fixture });
+      const results = await axe.run(fixture);
+      expect(results.violations).toHaveLength(0);
+    });
   });
 });

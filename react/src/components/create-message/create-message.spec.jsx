@@ -1,7 +1,6 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import axe from 'axe-core';
-import assert from 'assert';
 
 import CreateMessage from './create-message';
 
@@ -16,9 +15,11 @@ describe('CreateMessage', () => {
     component?.unmount();
   });
 
-  it('should have 0 violations', async () => {
-    component = mount(<CreateMessage />, { attachTo: fixture });
-    const results = await axe.run(fixture);
-    assert.equal(results.violations.length, 0);
+  describe('Accessibility', () => {
+    it('should have 0 violations', async () => {
+      component = mount(<CreateMessage />, { attachTo: fixture });
+      const results = await axe.run(fixture);
+      expect(results.violations).toHaveLength(0);
+    });
   });
 });
