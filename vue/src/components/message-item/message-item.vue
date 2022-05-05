@@ -1,5 +1,5 @@
 <template>
-  <div class="message-item">
+  <div class="message-item" tabindex="-1" ref="container" data-test-handle="message-item">
     <div>
       <img class="profile" :src="user.profile" alt="" />
     </div>
@@ -14,6 +14,7 @@
           class="delete"
           title="Delete"
           v-on:click="deleteMessage"
+          data-test-handle="delete-item"
         >
           <Icon name="delete" alt="Delete"/>
         </button>
@@ -48,7 +49,7 @@ import { getTime } from '../../utils';
 
 export default {
   name: 'MessageItem',
-  props: ['id', 'user', 'timestamp', 'message', 'comments', 'likes', 'sympathy', 'shares'],
+  props: ['id', 'user', 'timestamp', 'message', 'comments', 'likes', 'sympathy', 'shares', 'focus'],
   components: {
     SocialButton,
     Icon
@@ -66,7 +67,18 @@ export default {
       }
     }
   },
-
+  mounted() {
+    if (this.focus) {
+      this.$refs.container.focus();
+    }
+  },
+  watch: {
+    focus() {
+      if (this.focus) {
+        this.$refs.container.focus();
+      }
+    }
+  },
   computed: {
     relativeTime() {
       return getTime(this.timestamp);

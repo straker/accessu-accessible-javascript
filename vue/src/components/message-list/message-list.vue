@@ -1,7 +1,7 @@
 <template>
   <ul class="message-list">
-    <li v-for="message in messages">
-      <MessageItem v-bind="message" @delete="onDelete" />
+    <li v-for="(message, index) in messages">
+      <MessageItem v-bind="message" @delete="onDelete" :focus="focus && index === 0 ? true : null" />
     </li>
   </ul>
 </template>
@@ -11,7 +11,7 @@ import MessageItem from '../message-item/message-item.vue';
 
 export default {
   name: 'MessageList',
-  props: ['messages'],
+  props: ['messages', 'focus'],
   components: {
     MessageItem
   },

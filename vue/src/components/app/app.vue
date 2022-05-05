@@ -6,7 +6,7 @@
     </header>
     <main class="body">
       <CreateMessage @create="createMessage"/>
-      <MessageList :messages="messages" @delete="deleteMessage" />
+      <MessageList :messages="messages" @delete="deleteMessage" :focus="focus" />
     </main>
   </div>
 </template>
@@ -26,7 +26,8 @@ export default {
   },
   data() {
     return {
-      messages
+      messages,
+      focus: false
     }
   },
   methods: {
@@ -52,6 +53,7 @@ export default {
         shares: 0
       };
       this.messages = [newMessage, ...this.messages];
+      this.focus = true;
     },
 
     /**
@@ -60,6 +62,7 @@ export default {
      */
     deleteMessage(id) {
       this.messages = this.messages.filter(message => message.id !== id);
+      this.focus = true;
     }
   }
 }
