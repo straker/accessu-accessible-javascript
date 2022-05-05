@@ -16,7 +16,7 @@ describe('Icon', () => {
   });
 
   describe('Accessibility', () => {
-    it('should have 0 violations', async () => {
+    it('should have 0 axe violations', async () => {
       component = mount(<Icon name="like" />, { attachTo: fixture });
       const results = await axe.run(fixture);
       expect(results.violations).toHaveLength(0);

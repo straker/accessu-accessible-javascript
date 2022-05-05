@@ -15,7 +15,7 @@ describe('App', () => {
   });
 
   describe('Accessibility', () => {
-    it('should have 0 violations', async () => {
+    it('should have 0 axe violations', async () => {
       component = mount(App, { attachTo: fixture });
       const results = await axe.run(fixture);
       expect(results.violations).to.have.length(0);

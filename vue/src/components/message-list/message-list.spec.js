@@ -31,7 +31,7 @@ describe('MessageList', () => {
   });
 
   describe('Accessibility', () => {
-    it('should have 0 violations', async () => {
+    it('should have 0 axe violations', async () => {
       component = mount(MessageList, {
         attachTo: fixture,
         props: {

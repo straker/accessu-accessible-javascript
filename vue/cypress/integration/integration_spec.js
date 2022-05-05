@@ -6,7 +6,7 @@ it('should navigate to the correct page', async () => {
 });
 
 describe('Accessibility', () => {
-  it('should have 0 violations', async () => {
+  it('should have 0 axe violations', async () => {
     cy.visit('http://localhost:8080/');
     cy.injectAxe();
     cy.checkA11y();

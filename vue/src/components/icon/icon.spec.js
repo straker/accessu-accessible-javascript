@@ -15,7 +15,7 @@ describe('Icon', () => {
   });
 
   describe('Accessibility', () => {
-    it('should have 0 violations', async () => {
+    it('should have 0 axe violations', async () => {
       component = mount(Icon, {
         attachTo: fixture,
         props: {
