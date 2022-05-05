@@ -55,7 +55,7 @@ export default class MessageItem extends React.Component {
       userShared
     } = this.state;
 
-    return <div className={styles.messageItem} tabIndex={-1} ref={(ref) => this.container = ref} data-js-handle="message-item">
+    return <div className={styles.messageItem} tabIndex={-1} ref={(ref) => this.container = ref} data-test-handle="message-item">
       <div>
         <img className={styles.profile} src={user.profile} alt="" />
       </div>
@@ -71,7 +71,7 @@ export default class MessageItem extends React.Component {
             className={styles.delete}
             title="Delete"
             onClick={() => deleteMessage(id)}
-            data-js-handle="delete-item"
+            data-test-handle="delete-item"
           >
             <Icon name="delete" alt="Delete"/>
           </div>

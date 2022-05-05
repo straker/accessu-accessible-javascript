@@ -21,7 +21,7 @@ describe('Accessibility', () => {
       await page.click('input[type="submit"]');
 
       const focusHandle = await page.evaluateHandle(() => document.activeElement);
-      const firstMessage = await page.$('[data-js-handle="message-item"]');
+      const firstMessage = await page.$('[data-test-handle="message-item"]');
       const equal = await page.evaluate((e1, e2) => e1 === e2, focusHandle, firstMessage);
       expect(equal).toEqual(true);
     });
@@ -30,10 +30,10 @@ describe('Accessibility', () => {
   describe('Delete message', () => {
     it('should move focus to the first message', async () => {
       await page.goto('http://localhost:8080/');
-      await page.click('[data-js-handle="delete-item"]');
+      await page.click('[data-test-handle="delete-item"]');
 
       const focusHandle = await page.evaluateHandle(() => document.activeElement);
-      const firstMessage = await page.$('[data-js-handle="message-item"]');
+      const firstMessage = await page.$('[data-test-handle="message-item"]');
       const equal = await page.evaluate((e1, e2) => e1 === e2, focusHandle, firstMessage);
       expect(equal).toEqual(true);
     });
