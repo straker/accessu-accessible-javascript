@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import axe from 'axe-core';
+
 import SocialButton from './social-button';
 
 describe('SocialButton', () => {

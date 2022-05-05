@@ -1,16 +1,15 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { mount } from "@vue/test-utils";
 import axe from 'axe-core';
 
-import MessageList from './message-list';
+import MessageItem from './message-item.vue';
 
-describe('MessageList', () => {
+describe('MessageItem', () => {
   // axe can only run on connected DOM nodes so we need to mount each
   // component into the DOM tree
   let fixture = document.createElement('div');
   document.body.appendChild(fixture);
 
-  const messages = [{
+  const message = {
     id: 1,
     user: {
       name: 'John Doe',
@@ -24,7 +23,7 @@ describe('MessageList', () => {
     likes: 1,
     sympathy: 2,
     shares: 3
-  }];
+  };
 
   let component;
   afterEach(() => {
@@ -33,9 +32,14 @@ describe('MessageList', () => {
 
   describe('Accessibility', () => {
     it('should have 0 axe violations', async () => {
-      component = mount(<MessageList messages={messages} />, { attachTo: fixture });
+      component = mount(MessageItem, {
+        attachTo: fixture,
+        props: {
+          ...message
+        }
+      });
       const results = await axe.run(fixture);
-      expect(results.violations).toHaveLength(0);
+      expect(results.violations).to.have.length(0);
     });
   });
 });

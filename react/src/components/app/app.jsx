@@ -1,6 +1,5 @@
 import React from 'react';
 import MessageList from '../message-list/message-list';
-import Icon from '../icon/icon';
 import CreateMessage from '../create-message/create-message';
 import styles from './app.modules.css';
 

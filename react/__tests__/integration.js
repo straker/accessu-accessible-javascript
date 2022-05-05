@@ -7,7 +7,7 @@ it('should navigate to the correct page', async () => {
 });
 
 describe('Accessibility', () => {
-  it('should have 0 violations', async () => {
+  it('should have 0 axe violations', async () => {
     await page.goto('http://localhost:8080/');
     const results = await new AxePuppeteer(page).analyze();
     expect(results.violations).toHaveLength(0);

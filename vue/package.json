@@ -1,0 +1,34 @@
+{
+  "name": "accessible-javascript-vue",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "karma start",
+    "test:integration": "start-server-and-test start http://localhost:8080 'cypress run'",
+    "build": "node esbuild.js",
+    "start": "http-server -s",
+    "develop": "node esbuild.js -- watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/test-utils": "^2.0.0-rc.21",
+    "axe-core": "^4.4.1",
+    "chai": "^4.3.6",
+    "cypress": "^9.6.0",
+    "cypress-axe": "^0.14.0",
+    "esbuild": "^0.14.38",
+    "esbuild-plugin-vue3": "^0.3.0",
+    "http-server": "^14.1.0",
+    "karma": "^6.3.19",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-esbuild": "^2.2.4",
+    "karma-mocha": "^2.0.1",
+    "karma-spec-reporter": "0.0.34",
+    "mocha": "^10.0.0",
+    "node-notifier": "^10.0.1",
+    "start-server-and-test": "^1.14.0",
+    "vue": "^3.2.33"
+  }
+}
