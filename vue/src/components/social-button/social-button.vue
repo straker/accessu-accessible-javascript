@@ -1,12 +1,14 @@
 <template>
-  <div
+  <button
+    :aria-pressed="state.pressed"
     :class="className"
     :title="title"
+    :aria-label="title"
     v-on:click="onClick"
   >
     <Icon :name="iconName" :alt="title"></Icon>
     {{ formattedCount }}
-  </div>
+  </button>
 </template>
 
 <script>
