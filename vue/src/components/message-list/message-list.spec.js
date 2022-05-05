@@ -1,8 +1,7 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { mount } from "@vue/test-utils";
 import axe from 'axe-core';
 
-import MessageList from './message-list';
+import MessageList from './message-list.vue';
 
 describe('MessageList', () => {
   // axe can only run on connected DOM nodes so we need to mount each
@@ -33,9 +32,14 @@ describe('MessageList', () => {
 
   describe('Accessibility', () => {
     it('should have 0 violations', async () => {
-      component = mount(<MessageList messages={messages} />, { attachTo: fixture });
+      component = mount(MessageList, {
+        attachTo: fixture,
+        props: {
+          messages
+        }
+      });
       const results = await axe.run(fixture);
-      expect(results.violations).toHaveLength(0);
+      expect(results.violations).to.have.length(0);
     });
   });
 });

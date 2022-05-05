@@ -1,8 +1,7 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { mount } from "@vue/test-utils";
 import axe from 'axe-core';
 
-import MessageItem from './message-item';
+import MessageItem from './message-item.vue';
 
 describe('MessageItem', () => {
   // axe can only run on connected DOM nodes so we need to mount each
@@ -10,7 +9,7 @@ describe('MessageItem', () => {
   let fixture = document.createElement('div');
   document.body.appendChild(fixture);
 
-   const message = {
+  const message = {
     id: 1,
     user: {
       name: 'John Doe',
@@ -33,9 +32,14 @@ describe('MessageItem', () => {
 
   describe('Accessibility', () => {
     it('should have 0 violations', async () => {
-      component = mount(<MessageItem {...message} />, { attachTo: fixture });
+      component = mount(MessageItem, {
+        attachTo: fixture,
+        props: {
+          ...message
+        }
+      });
       const results = await axe.run(fixture);
-      expect(results.violations).toHaveLength(0);
+      expect(results.violations).to.have.length(0);
     });
   });
 });

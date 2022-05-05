@@ -1,10 +1,9 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { mount } from "@vue/test-utils";
 import axe from 'axe-core';
 
-import Icon from './icon';
+import CreateMessage from './create-message.vue';
 
-describe('Icon', () => {
+describe('CreateMessage', () => {
   // axe can only run on connected DOM nodes so we need to mount each
   // component into the DOM tree
   let fixture = document.createElement('div');
@@ -17,9 +16,9 @@ describe('Icon', () => {
 
   describe('Accessibility', () => {
     it('should have 0 violations', async () => {
-      component = mount(<Icon name="like" />, { attachTo: fixture });
+      component = mount(CreateMessage, { attachTo: fixture });
       const results = await axe.run(fixture);
-      expect(results.violations).toHaveLength(0);
+      expect(results.violations).to.have.length(0);
     });
   });
 });

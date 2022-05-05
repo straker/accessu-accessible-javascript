@@ -1,10 +1,9 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { mount } from "@vue/test-utils";
 import axe from 'axe-core';
 
-import CreateMessage from './create-message';
+import SocialButton from './social-button.vue';
 
-describe('CreateMessage', () => {
+describe('SocialButton', () => {
   // axe can only run on connected DOM nodes so we need to mount each
   // component into the DOM tree
   let fixture = document.createElement('div');
@@ -17,9 +16,17 @@ describe('CreateMessage', () => {
 
   describe('Accessibility', () => {
     it('should have 0 violations', async () => {
-      component = mount(<CreateMessage />, { attachTo: fixture });
+      component = mount(SocialButton, {
+        attachTo: fixture,
+        props: {
+          icon: 'like',
+          title: 'Like',
+          count: 10,
+          pressed: false
+        }
+      });
       const results = await axe.run(fixture);
-      expect(results.violations).toHaveLength(0);
+      expect(results.violations).to.have.length(0);
     });
   });
 });
