@@ -1,6 +1,6 @@
 <template>
   <form class="form" @submit.prevent="onSubmit">
-    <label htmlFor="message">New Message</label>
+    <label for="message">New Message</label>
     <textarea
       class="textarea"
       id="message"
@@ -27,6 +27,7 @@ export default {
       }
 
       this.$emit('create', this.message);
+      this.message = '';
     }
   }
 }

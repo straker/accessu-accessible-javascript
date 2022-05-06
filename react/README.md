@@ -28,6 +28,14 @@ npm run develop
 
 ### Run tests
 
+Unit tests
+
 ```sh
 npm run test
+```
+
+Integration tests
+
+```sh
+npm run test:integration
 ```
