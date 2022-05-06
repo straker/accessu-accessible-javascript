@@ -1,9 +1,6 @@
 <script>
 export let name;
-
-// @see https://stackoverflow.com/questions/55957386/use-reserved-word-as-prop-name
-let classProp;
-export { classProp as class };
+export let alt;
 
 // @see https://fonts.google.com/icons
 const icons = {
@@ -20,7 +17,6 @@ const icons = {
 }
 
 let icon = icons[name];
-let className = `${classProp} icon`;
 </script>
 
 <style>
@@ -34,4 +30,4 @@ let className = `${classProp} icon`;
 }
 </style>
 
-<svg class={className} xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 48 48">{@html icon}</svg>
+<svg role="img" aria-label={alt} class="icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 48 48">{@html icon}</svg>

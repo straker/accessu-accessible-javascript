@@ -19,7 +19,8 @@ describe('Icon', () => {
       component = mount(Icon, {
         attachTo: fixture,
         props: {
-          name: 'like'
+          name: 'like',
+          alt: 'Like'
         }
       });
       const results = await axe.run(fixture);

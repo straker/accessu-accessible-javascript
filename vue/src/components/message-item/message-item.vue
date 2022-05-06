@@ -172,12 +172,6 @@ export default {
   margin-top: auto;
 }
 
-.stat-button {
-  display: flex;
-  align-items: center;
-  column-gap: 0.5rem
-}
-
 @media only screen and (max-width: 33rem) {
   .header {
     display: grid;

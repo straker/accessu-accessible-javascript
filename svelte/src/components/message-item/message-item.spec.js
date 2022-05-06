@@ -1,7 +1,7 @@
-import { mount } from "@vue/test-utils";
+import { cleanup, render } from '@testing-library/svelte'
 import axe from 'axe-core';
 
-import MessageItem from './message-item.vue';
+import MessageItem from './message-item.svelte';
 
 describe('MessageItem', () => {
   // axe can only run on connected DOM nodes so we need to mount each
@@ -18,28 +18,24 @@ describe('MessageItem', () => {
       profile: '/path/to/profile.png'
     },
     timestamp: (new Date()).toISOString(),
-    messaage: 'Hello World',
+    message: 'Hello World',
     comments: [],
     likes: 1,
     sympathy: 2,
     shares: 3
   };
 
-  let component;
   afterEach(() => {
-    component?.unmount();
+    cleanup();
   });
 
   describe('Accessibility', () => {
     it('should have 0 axe violations', async () => {
-      component = mount(MessageItem, {
-        attachTo: fixture,
-        props: {
-          ...message
-        }
-      });
+      const component = render(MessageItem, {
+        ...message
+      }, { container: fixture });
       const results = await axe.run(fixture);
-      expect(results.violations).to.have.length(0);
+      expect(results.violations).toHaveLength(0);
     });
   });
 });

@@ -18,7 +18,7 @@ describe('MessageList', () => {
       profile: '/path/to/profile.png'
     },
     timestamp: (new Date()).toISOString(),
-    messaage: 'Hello World',
+    message: 'Hello World',
     comments: [],
     likes: 1,
     sympathy: 2,

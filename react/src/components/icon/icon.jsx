@@ -3,10 +3,11 @@ import styles from './icon.modules.css';
 
 export default class Icon extends React.Component {
   render () {
-    let { name, className = ''} = this.props;
-    className = `${className} ${styles.icon}`;
+    let { name, alt } = this.props;
 
-    return <svg className={className} xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 48 48">{icons[name]}</svg>
+    return <svg role="img" aria-label={alt} className={styles.icon} xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 48 48">
+      {icons[name]}
+    </svg>
   }
 }
 
