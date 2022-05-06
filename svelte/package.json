@@ -1,0 +1,23 @@
+{
+  "name": "accessible-javascript-react",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "cross-env TEST_ENV=unit jest",
+    "test:integration": "cross-env TEST_ENV=integration start-server-and-test start http://localhost:8080 jest",
+    "build": "node esbuild.js",
+    "start": "http-server -s",
+    "develop": "node esbuild.js -- watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axe-core": "^4.4.1",
+    "esbuild": "^0.14.38",
+    "esbuild-svelte": "^0.7.0",
+    "http-server": "^14.1.0",
+    "node-notifier": "^10.0.1",
+    "start-server-and-test": "^1.14.0",
+    "svelte": "^3.48.0"
+  }
+}

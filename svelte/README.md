@@ -1,6 +1,6 @@
-# Vue Social Platform
+# Svelte Social Platform
 
-A sample Vue project for a new social platform. Uses Vue@3 and tests with Karma/Mocha and Cypress.
+A sample Svelte project for a new social platform. Uses Svelte@17 and tests with Jest and Enzyme.
 
 ## Project Setup
 
