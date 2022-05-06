@@ -1,5 +1,3 @@
-// const { AxePuppeteer } = require('@axe-core/puppeteer');
-
 it('should navigate to the correct page', async () => {
   cy.visit('http://localhost:8080/');
   cy.title().should('eq', 'foo Social Platform')

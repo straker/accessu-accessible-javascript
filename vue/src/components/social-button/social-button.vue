@@ -1,12 +1,12 @@
 <template>
-  <div
+  <button
     :class="className"
     :title="title"
     v-on:click="onClick"
   >
     <Icon :name="iconName" :alt="title"></Icon>
     {{ formattedCount }}
-  </div>
+  </button>
 </template>
 
 <script>

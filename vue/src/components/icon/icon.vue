@@ -1,17 +1,14 @@
 <template>
-  <svg :class="className" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 48 48" v-html="icon"></svg>
+  <svg role="img" :aria-label="alt" class="icon" xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewBox="0 0 48 48" v-html="icon"></svg>
 </template>
 
 <script>
 export default {
   name: 'Icon',
-  props: ['name', 'class'],
+  props: ['name', 'alt'],
   computed: {
     icon() {
       return icons[this.name];
-    },
-    className() {
-      return `${this.class} icon`;
     }
   }
 }
