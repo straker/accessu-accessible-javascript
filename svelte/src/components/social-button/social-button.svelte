@@ -41,11 +41,12 @@ function onClick() {
 }
 </style>
 
-<div
+<button
+  aria-pressed={pressed}
   class={className}
   title={title}
   on:click={onClick}
 >
   <Icon name={iconName} alt={title}></Icon>
   { formattedCount }
-</div>
+</button>
