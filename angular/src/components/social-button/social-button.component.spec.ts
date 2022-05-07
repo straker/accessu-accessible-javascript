@@ -1,31 +1,31 @@
 import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { MockComponent } from 'ng-mocks';
+import { SocialButtonComponent } from '../social-button/social-button.component';
+import { IconComponent } from '../icon/icon.component';
+import * as axe from 'axe-core';
 
-describe('AppComponent', () => {
+describe('SocialButtonComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        SocialButtonComponent,
+        MockComponent(IconComponent)
       ],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  describe('Accessibility', () => {
+    it('should have 0 axe violations', async () => {
+      const fixture = TestBed.createComponent(SocialButtonComponent);
+      const comp = fixture.componentInstance;
+      comp.icon = 'like';
+      comp.title = 'Like';
+      comp.count = 10;
+      comp.pressed = false;
+      fixture.detectChanges();
 
-  it(`should have as title 'angular'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular app is running!');
+      const results = await axe.run(fixture.nativeElement);
+      expect(results.violations).toHaveSize(0);
+    });
   });
 });

@@ -1,31 +1,45 @@
 import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { MockComponent } from 'ng-mocks';
+import { MessageListComponent } from '../message-list/message-list.component';
+import { MessageItemComponent } from '../message-item/message-item.component';
+import * as axe from 'axe-core';
+import { Message } from '../../types';
 
-describe('AppComponent', () => {
+describe('MessageListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        MessageListComponent,
+        MockComponent(MessageItemComponent)
       ],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  const messages: Message[] = [{
+    id: 1,
+    user: {
+      name: 'John Doe',
+      handle: '@john_doe',
+      link: '/user/@john_doe',
+      profile: '/path/to/profile.png'
+    },
+    timestamp: (new Date()).toISOString(),
+    message: 'Hello World',
+    comments: [],
+    likes: 1,
+    sympathy: 2,
+    shares: 3
+  }];
 
-  it(`should have as title 'angular'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular');
-  });
+  describe('Accessibility', () => {
+    it('should have 0 axe violations', async () => {
+      const fixture = TestBed.createComponent(MessageListComponent);
+      const comp = fixture.componentInstance;
+      comp.messages = messages;
+      fixture.detectChanges();
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular app is running!');
+      const results = await axe.run(fixture.nativeElement);
+      expect(results.violations).toHaveSize(0);
+    });
   });
 });

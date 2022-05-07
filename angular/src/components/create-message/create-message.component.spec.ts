@@ -1,31 +1,21 @@
 import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { CreateMessageComponent } from '../create-message/create-message.component';
+import * as axe from 'axe-core';
 
-describe('AppComponent', () => {
+describe('CreateMessageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        CreateMessageComponent
       ],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'angular'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular app is running!');
+  describe('Accessibility', () => {
+    it('should have 0 axe violations', async () => {
+      const fixture = TestBed.createComponent(CreateMessageComponent);
+      const results = await axe.run(fixture.nativeElement);
+      expect(results.violations).toHaveSize(0);
+    });
   });
 });
