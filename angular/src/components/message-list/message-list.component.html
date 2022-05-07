@@ -1,0 +1,15 @@
+<ul class="message-list">
+  <li *ngFor="let message of messages">
+    <message-item
+      [id]="message.id"
+      [user]="message.user"
+      [timestamp]="message.timestamp"
+      [message]="message.message"
+      [comments]="message.comments"
+      [likes]="message.likes"
+      [sympathy]="message.sympathy"
+      [shares]="message.shares"
+      (deleteMessageEvent)="onDelete($event)"
+    ></message-item>
+  </li>
+</ul>
