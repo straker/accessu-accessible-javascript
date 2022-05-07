@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { getTime } from '../../utils';
 import { User, Message } from '../../types';
 
@@ -8,6 +8,8 @@ import { User, Message } from '../../types';
   styleUrls: ['./message-item.component.css']
 })
 export class MessageItemComponent {
+  @ViewChild('container') containerElement!: ElementRef;
+
   @Input() id: number = 0;
   @Input() user: User = {
     name: '',
@@ -31,6 +33,21 @@ export class MessageItemComponent {
     this.relativeTime = getTime(timestamp);
   }
 
+  public get focus(): boolean {
+   return this._focus;
+  }
+
+  @Input()
+  public set focus(focus: boolean) {
+    this._focus = focus;
+
+    setTimeout(() => {
+      if (focus) {
+        this.containerElement.nativeElement.focus();
+      }
+    });
+  }
+
   @Output() deleteMessageEvent = new EventEmitter<number>();
 
   userCommented: boolean = false;
@@ -40,6 +57,7 @@ export class MessageItemComponent {
   relativeTime: string = '';
 
   private _timestamp: string = '';
+  private _focus: boolean = false;
 
   deleteMessage() {
     this.deleteMessageEvent.emit(this.id);

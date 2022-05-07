@@ -10,6 +10,7 @@ import messageData from '../../assets/messages';
 })
 export class AppComponent {
   messages = messageData;
+  focus: boolean = false;
 
   /**
    * Create a new message state object.
@@ -41,5 +42,6 @@ export class AppComponent {
    */
   deleteMessage(id: number) {
     this.messages = this.messages.filter(message => message.id !== id);
+    this.focus = true;
   }
 }

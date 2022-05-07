@@ -1,5 +1,5 @@
 <ul class="message-list">
-  <li *ngFor="let message of messages">
+  <li *ngFor="let message of messages; first as isFirst">
     <message-item
       [id]="message.id"
       [user]="message.user"
@@ -10,6 +10,7 @@
       [sympathy]="message.sympathy"
       [shares]="message.shares"
       (deleteMessageEvent)="onDelete($event)"
+      [focus]="focus && isFirst"
     ></message-item>
   </li>
 </ul>
