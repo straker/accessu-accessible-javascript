@@ -21,17 +21,13 @@ export default class MessageItem extends React.Component {
 
   componentDidMount() {
     if (this.props.focus) {
-      setTimeout(() => {
-        this.container.focus();
-      });
+      this.container.focus();
     }
   }
 
   componentDidUpdate() {
     if (this.props.focus) {
-      setTimeout(() => {
-        this.container.focus();
-      });
+      this.container.focus();
     }
   }
 
@@ -66,15 +62,14 @@ export default class MessageItem extends React.Component {
             <span className={styles.handle}>{user.handle}</span>
           </a>
           <div className={styles.date}>{getTime(timestamp)}</div>
-          <div
-            tabIndex={0}
+          <button
             className={styles.delete}
             title="Delete"
             onClick={() => deleteMessage(id)}
             data-test-handle="delete-item"
           >
             <Icon name="delete" alt="Delete"/>
-          </div>
+          </button>
         </div>
         <div className={styles.body}>
           {message}
