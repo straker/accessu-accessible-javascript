@@ -1,0 +1,10 @@
+<div class="app">
+  <header class="header">
+    <img class="icon" src="/assets/angular-logo.svg" alt=""/>
+    <h1 class="title">Home</h1>
+  </header>
+  <main class="body">
+    <create-message (createMessageEvent)="createMessage($event)"></create-message>
+    <message-list [messages]="messages" (deleteMessageEvent)="deleteMessage($event)"></message-list>
+  </main>
+</div>

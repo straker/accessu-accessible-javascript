@@ -1,0 +1,40 @@
+<div class="message-item">
+  <div>
+    <img class="profile" [src]="user.profile" alt="" />
+  </div>
+  <div class="message">
+    <div class="header">
+      <a class="link" [href]="user.link">
+        <span class="name">{{ user.name }}</span>
+        <span class="handle">{{ user.handle }}</span>
+      </a>
+      <div class="date">{{ relativeTime }}</div>
+      <button
+        class="delete"
+        title="Delete"
+        (click)="deleteMessage()"
+      >
+        <icon name="delete" alt="Delete"></icon>
+      </button>
+    </div>
+    <div class="body">
+      {{ message }}
+    </div>
+    <div class="footer">
+      <ul class="list">
+        <li>
+          <social-button icon="comment" title="Comment" [count]="comments.length" [pressed]="userCommented"></social-button>
+        </li>
+        <li>
+          <social-button icon="like" title="Like" [count]="likes" [pressed]="userLiked"></social-button>
+        </li>
+        <li>
+          <social-button icon="sympathize" title="Sympathize" [count]="sympathy" [pressed]="userSympathy"></social-button>
+        </li>
+        <li>
+          <social-button icon="share" title="Share" [count]="shares" [pressed]="userShared"></social-button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
