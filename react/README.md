@@ -2,6 +2,15 @@
 
 A sample React project for a new social platform. Uses React@17 and tests with Jest and Enzyme.
 
+## Helpful links
+
+- [React](https://reactjs.org/)
+- [Jest](https://jestjs.io/)
+- [Enzyme](https://enzymejs.github.io/enzyme/)
+- [Puppeteer](https://pptr.dev/)
+- [Jest Assertions](https://jestjs.io/docs/expect)
+- [React CSS Modules](https://medium.com/@ralph1786/using-css-modules-in-react-app-c2079eadbb87)
+
 ## Project Setup
 
 ```sh
