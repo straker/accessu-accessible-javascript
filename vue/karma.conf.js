@@ -1,4 +1,4 @@
-const vuePlugin = require("esbuild-plugin-vue3");
+const vuePlugin = require('esbuild-plugin-vue3');
 
 module.exports = function (config) {
   config.set({
@@ -10,7 +10,7 @@ module.exports = function (config) {
       { pattern: 'src/**/*.spec.js', type: 'module' }
     ],
     preprocessors: {
-      "**/*.spec.js": ["esbuild"],
+      '**/*.spec.js': ['esbuild'],
     },
     proxies: {
       '/src': '/base/src',
