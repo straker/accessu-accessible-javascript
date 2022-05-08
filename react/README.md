@@ -10,6 +10,7 @@ A sample React project for a new social platform. Uses React@17 and tests with J
 - [Puppeteer](https://pptr.dev/)
 - [Jest Assertions](https://jestjs.io/docs/expect)
 - [React CSS Modules](https://medium.com/@ralph1786/using-css-modules-in-react-app-c2079eadbb87)
+- [Enzyme simulate click](https://enzymejs.github.io/enzyme/docs/api/ReactWrapper/simulate.html)
 
 ## Project Setup
 
