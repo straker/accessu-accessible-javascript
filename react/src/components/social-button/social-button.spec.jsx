@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import axe from 'axe-core';
 
 import SocialButton from './social-button';
@@ -28,22 +28,26 @@ describe('SocialButton', () => {
     });
 
     it('should use [aria-pressed="false"] when passed `pressed=false`', () => {
-      component = shallow(<SocialButton icon="like" title="Like" count={10} pressed={false} />);
-      expect(component.prop('aria-pressed')).toEqual(false);
+      component = mount(<SocialButton icon="like" title="Like" count={10} pressed={false} />);
+      const attr = component.instance().button.getAttribute('aria-pressed');
+      expect(attr).toEqual('false');
     });
 
     it('should use [aria-pressed="true"] when passed `pressed=true`', () => {
-      component = shallow(<SocialButton icon="like" title="Like" count={10} pressed={true} />);
-      expect(component.prop('aria-pressed')).toEqual(true);
+      component = mount(<SocialButton icon="like" title="Like" count={10} pressed={true} />);
+      const attr = component.instance().button.getAttribute('aria-pressed');
+      expect(attr).toEqual('true');
     });
 
     it('should update `aria-pressed` when clicked', () => {
-      component = shallow(<SocialButton icon="like" title="Like" count={10} pressed={false} />);
+      component = mount(<SocialButton icon="like" title="Like" count={10} pressed={false} />);
       component.simulate('click');
-      expect(component.prop('aria-pressed')).toEqual(true);
+      let attr = component.instance().button.getAttribute('aria-pressed');
+      expect(attr).toEqual('true');
 
       component.simulate('click');
-      expect(component.prop('aria-pressed')).toEqual(false);
+      attr = component.instance().button.getAttribute('aria-pressed');
+      expect(attr).toEqual('false');
     });
   });
 });
