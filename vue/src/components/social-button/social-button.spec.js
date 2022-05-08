@@ -3,7 +3,7 @@ import axe from 'axe-core';
 
 import SocialButton from './social-button.vue';
 
-describe.only('SocialButton', () => {
+describe('SocialButton', () => {
   // axe can only run on connected DOM nodes so we need to mount each
   // component into the DOM tree
   let fixture = document.createElement('div');
