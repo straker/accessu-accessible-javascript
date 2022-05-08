@@ -24,7 +24,7 @@ describe('SocialButton', () => {
 
     it('should use a button element', () => {
       component = mount(<SocialButton icon="like" title="Like" count={10} pressed={false} />);
-      expect(component.instance().button instanceof HTMLButtonElement).toEqual(true);
+      expect(component.find('button')).toBeDefined();
     });
 
     it('should use [aria-pressed="false"] when passed `pressed=false`', () => {
