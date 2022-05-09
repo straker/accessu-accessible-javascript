@@ -5,6 +5,7 @@ import MessageList from '../message-list/message-list.svelte';
 // pretend we got this from a database query
 import messageData from '../../assets/messages';
 let messages = messageData;
+let focus;
 
 /**
  * Create a new message state object.
@@ -36,6 +37,7 @@ function createMessage(event) {
  */
 function deleteMessage(event) {
   messages = messages.filter(message => message.id !== event.detail.id);
+  focus = true;
 }
 </script>
 
@@ -78,6 +80,6 @@ function deleteMessage(event) {
   </header>
   <main class="body">
     <CreateMessage on:create={createMessage}/>
-    <MessageList messages={messages} on:delete={deleteMessage}/>
+    <MessageList messages={messages} on:delete={deleteMessage} focus={focus}/>
   </main>
 </div>

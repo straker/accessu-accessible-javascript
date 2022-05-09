@@ -8,6 +8,7 @@ import { Message } from '../../types';
 })
 export class MessageListComponent {
   @Input() messages: Message[] = [];
+  @Input() focus: boolean = false;
 
   @Output() deleteMessageEvent = new EventEmitter<number>();
 

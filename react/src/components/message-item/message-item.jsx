@@ -19,6 +19,18 @@ export default class MessageItem extends React.Component {
     };
   }
 
+  componentDidMount() {
+    if (this.props.focus) {
+      this.container.focus();
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.focus) {
+      this.container.focus();
+    }
+  }
+
   render () {
     const {
       id,
@@ -26,7 +38,8 @@ export default class MessageItem extends React.Component {
       timestamp,
       message,
       comments,
-      deleteMessage
+      deleteMessage,
+      focus
     } = this.props;
     const {
       userCommented,
@@ -38,7 +51,7 @@ export default class MessageItem extends React.Component {
       userShared
     } = this.state;
 
-    return <div className={styles.messageItem}>
+    return <div className={styles.messageItem} tabIndex={-1} ref={(ref) => this.container = ref} data-test-handle="message-item">
       <div>
         <img className={styles.profile} src={user.profile} alt="" />
       </div>
@@ -53,6 +66,7 @@ export default class MessageItem extends React.Component {
             className={styles.delete}
             title="Delete"
             onClick={() => deleteMessage(id)}
+            data-test-handle="delete-item"
           >
             <Icon name="delete" alt="Delete"/>
           </button>

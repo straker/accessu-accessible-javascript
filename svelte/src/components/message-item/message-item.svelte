@@ -2,7 +2,7 @@
 import SocialButton from '../social-button/social-button.svelte';
 import Icon from '../icon/icon.svelte';
 import { getTime } from '../../utils';
-import { createEventDispatcher } from 'svelte';
+import { createEventDispatcher, onMount, afterUpdate } from 'svelte';
 
 const dispatch = createEventDispatcher();
 
@@ -14,6 +14,7 @@ export let comments;
 export let likes;
 export let sympathy;
 export let shares;
+export let focus;
 
 let userCommented = false;
 let userLiked = false
@@ -21,6 +22,19 @@ let userSympathy = false
 let userShared = false
 
 let relativeTime = getTime(timestamp);
+let container;
+
+onMount(() => {
+  if (focus) {
+    container.focus();
+  }
+});
+
+afterUpdate(() => {
+  if (focus) {
+    container.focus();
+  }
+});
 
 function deleteMessage() {
   dispatch('delete', { id });
@@ -134,7 +148,7 @@ function deleteMessage() {
 }
 </style>
 
-<div class="message-item">
+<div class="message-item" tabindex="-1" bind:this={container} data-test-handle="message-item">
   <div>
     <img class="profile" src={user.profile} alt="" />
   </div>
@@ -149,6 +163,7 @@ function deleteMessage() {
         class="delete"
         title="Delete"
         on:click={deleteMessage}
+        data-test-handle="delete-item"
       >
         <Icon name="delete" alt="Delete"/>
       </button>

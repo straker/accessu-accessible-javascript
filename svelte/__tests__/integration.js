@@ -26,4 +26,14 @@ describe('Accessibility', () => {
     const results = await new AxeBuilder({ client }).analyze();
     expect(results.violations).toHaveLength(0);
   });
+
+  describe('Delete message', () => {
+    it('should move focus to the first message', async () => {
+      await client.url('http://localhost:8080/');
+      await client.$('[data-test-handle="delete-item"]').click();
+
+      const firstMessage = await client.$('[data-test-handle="message-item"]');
+      expect(await firstMessage.isFocused()).toBe(true);
+    });
+  });
 });

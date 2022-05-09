@@ -5,6 +5,6 @@
   </header>
   <main class="body">
     <create-message (createMessageEvent)="createMessage($event)"></create-message>
-    <message-list [messages]="messages" (deleteMessageEvent)="deleteMessage($event)"></message-list>
+    <message-list [messages]="messages" (deleteMessageEvent)="deleteMessage($event)" [focus]="focus"></message-list>
   </main>
 </div>

@@ -6,14 +6,14 @@ import { formatStat } from '../../utils';
 export default class SocialButton extends React.Component {
   constructor(props) {
     super(props);
-    const { count, pressed } = props;
+    const { count, pressed = false } = props;
     this.state = { count, pressed };
   }
 
   /**
    * Update the buttons pressed state.
    */
-  onClick() {
+  onClick(event) {
     const pressed = !this.state.pressed;
     const count = this.state.count + (pressed ? 1 : -1);
     this.setState({ count, pressed });
@@ -26,13 +26,16 @@ export default class SocialButton extends React.Component {
     const iconName = `${icon}${pressed ? '_filled' : ''}`;
     const className = `${styles.socialButton} ${pressed ? styles.pressed : ''}`;
 
-    return <div
+    return <button
+      ref={(node) => this.button = node}
+      aria-pressed={pressed}
       className={className}
       title={title}
-      onClick={() => this.onClick()}
+      aria-label={title}
+      onClick={() => this.onClick(event)}
     >
       <Icon name={iconName} alt={title}></Icon>
       {formatStat(count)}
-    </div>
+    </button>
   }
 }

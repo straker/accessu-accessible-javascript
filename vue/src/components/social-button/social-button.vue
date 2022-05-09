@@ -1,5 +1,6 @@
 <template>
   <button
+    :aria-pressed="state.pressed"
     :class="className"
     :title="title"
     v-on:click="onClick"

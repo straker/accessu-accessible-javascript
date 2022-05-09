@@ -1,8 +1,9 @@
-<div
+<button
   [class]="className"
   [title]="title"
   (click)="onClick()"
+  [attr.aria-pressed]="pressed"
 >
   <icon [name]="iconName" [alt]="title"></icon>
   {{ formattedCount }}
-</div>
+</button>

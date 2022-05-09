@@ -9,7 +9,7 @@ import messages from '../../assets/messages';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { messages };
+    this.state = { messages, focus: false };
     this.createMessage = this.createMessage.bind(this);
     this.deleteMessage = this.deleteMessage.bind(this);
   }
@@ -35,7 +35,7 @@ export default class App extends React.Component {
       sympathy: 0,
       shares: 0
     };
-    this.setState({ messages: [newMessage, ...this.state.messages] });
+    this.setState({ messages: [newMessage, ...this.state.messages], focus: true });
   }
 
   /**
@@ -43,7 +43,7 @@ export default class App extends React.Component {
    * @param {Number} id - ID of the message to delete.
    */
   deleteMessage(id) {
-    this.setState({ messages: this.state.messages.filter(message => message.id !== id)});
+    this.setState({ messages: this.state.messages.filter(message => message.id !== id), focus: true });
   }
 
   render() {
@@ -54,7 +54,7 @@ export default class App extends React.Component {
       </header>
       <main className={styles.body}>
         <CreateMessage onCreate={this.createMessage}/>
-        <MessageList messages={this.state.messages} onDelete={this.deleteMessage}/>
+        <MessageList messages={this.state.messages} onDelete={this.deleteMessage} focus={this.state.focus}/>
       </main>
     </div>
   }

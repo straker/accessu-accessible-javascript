@@ -1,4 +1,4 @@
-<div class="message-item">
+<div class="message-item" tabindex="-1" #container data-test-handle="message-item">
   <div>
     <img class="profile" [src]="user.profile" alt="" />
   </div>
@@ -13,6 +13,7 @@
         class="delete"
         title="Delete"
         (click)="deleteMessage()"
+        data-test-handle="delete-item"
       >
         <icon name="delete" alt="Delete"></icon>
       </button>

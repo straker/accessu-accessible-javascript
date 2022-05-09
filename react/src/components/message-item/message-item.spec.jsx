@@ -10,7 +10,7 @@ describe('MessageItem', () => {
   let fixture = document.createElement('div');
   document.body.appendChild(fixture);
 
-   const message = {
+  const message = {
     id: 1,
     user: {
       name: 'John Doe',
