@@ -1,6 +1,6 @@
 # React Social Platform
 
-A sample React project for a new social platform. Uses React@17 and tests with Jest and Enzyme.
+A sample React project for a new social platform. Uses React@17, unit tests with Jest and Enzyme, and integration tests with Puppeteer.
 
 ## Helpful links
 
@@ -29,6 +29,8 @@ npm run build
 ```sh
 npm run start
 ```
+
+Navigate to http://localhost:8080/
 
 ### Watch files for changes and rebuild
 

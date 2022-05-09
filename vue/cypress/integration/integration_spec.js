@@ -1,6 +1,6 @@
 it('should navigate to the correct page', () => {
   cy.visit('http://localhost:8080/');
-  cy.title().should('eq', 'foo Social Platform')
+  cy.title().should('eq', 'Vue Social Platform')
 });
 
 describe('Accessibility', () => {
