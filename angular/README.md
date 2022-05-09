@@ -1,27 +1,50 @@
-# Angular
+# Angular Social Platform
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+A sample Angular project for a new social platform. Uses Angular@2, unit tests with Angular Test Utils and Jasmine, and integration tests with Playwright.
 
-## Development server
+## Helpful links
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Angular](https://angular.io/)
+- [Jasmine](https://jasmine.github.io/)
+- [Angular Testing](https://angular.io/guide/testing-components-basics)
+- [Playwright](https://playwright.dev/)
 
-## Code scaffolding
+## Project Setup
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```sh
+npm install
+```
 
-## Build
+### Build files
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```sh
+npm run build
+```
 
-## Running unit tests
+### Start local server
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```sh
+npm run start
+```
 
-## Running end-to-end tests
+Navigate to http://localhost:8080/
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Watch files for changes and rebuild
 
-## Further help
+```sh
+npm run develop
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Run tests
+
+Unit tests
+
+```sh
+npm run test
+```
+
+Integration tests
+
+```sh
+npm run test:integration
+```
