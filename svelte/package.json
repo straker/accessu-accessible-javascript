@@ -1,13 +1,13 @@
 {
-  "name": "accessible-javascript-react",
+  "name": "accessible-javascript-svelte",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "vitest",
-    "test:integration": "cross-env TEST_ENV=integration start-server-and-test start http://localhost:8080 vitest",
     "build": "node esbuild.js",
     "start": "http-server -s",
-    "develop": "node esbuild.js -- watch"
+    "develop": "node esbuild.js -- watch",
+    "test": "vitest",
+    "test:integration": "cross-env TEST_ENV=integration start-server-and-test start http://localhost:8080 vitest"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +25,6 @@
     "start-server-and-test": "^1.14.0",
     "svelte": "^3.48.0",
     "vitest": "^0.10.4",
-    "webdriverio": "^7.19.7"
+    "webdriverio": "7.14.1"
   }
 }
